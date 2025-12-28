@@ -1,15 +1,15 @@
 package com.example.MovieCatalog.models;
 
 
-public class Item {
+public class MovieCatalogItem {
     private String name;
     private String description;
     private int rating;
 
-    public Item() {
+    public MovieCatalogItem() {
     }
 
-    public Item(String name, String description, int rating) {
+    public MovieCatalogItem(String name, String description, int rating) {
 
         this.name = name;
         this.description = description;
