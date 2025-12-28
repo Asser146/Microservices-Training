@@ -3,6 +3,7 @@ package com.example.MovieCatalog.services;
 import com.example.MovieCatalog.models.Movie;
 import com.example.MovieCatalog.models.MovieCatalogItem;
 import com.example.MovieCatalog.models.Rating;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,9 @@ import java.util.stream.Collectors;
 @RequestMapping("api/movieCatalog/")
 public class MovieCatalogController {
 
+    @Autowired
+    private RestTemplate restTemplate ;
+
     @GetMapping("{userId}")
     public List<MovieCatalogItem> getMovieCatalogItems(@PathVariable String userId) {
         // Sample ratings for the user
@@ -26,7 +30,6 @@ public class MovieCatalogController {
                 new Rating(1235, 8)
         );
 
-        RestTemplate restTemplate = new RestTemplate();
 
         // Transform rating list into movie catalog items
         return tempRatingList.stream().map(rating -> {
